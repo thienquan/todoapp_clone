@@ -1,36 +1,40 @@
 import React from 'react';
 
 function App() {
+  let items = [
+    {
+      id: 1,
+      text: 'Ghi chép chi tiêu trong ngày',
+      completed: false,
+    },
+    {
+      id: 2,
+      text: 'Mua kệ cho vk',
+      completed: false,
+    },
+    {
+      id: 3,
+      text: 'Code dự án cty',
+      completed: false,
+    },
+  ];
+  let title = 'Công việc cần làm';
   return (
     <div className="container">
       <div className="row">
         <div className="todolist">
-          <h1>Công việc cần làm</h1>
+          <h1>{title.toUpperCase()}</h1>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="todo-item-check-1" />
-                <label className="form-check-label" htmlFor="todo-item-check-1">
-                  Ghi chép chi tiêu trong ngày
-                </label>
-              </div>
-            </li>
-            <li className="list-group-item">
-              <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="todo-item-check-2" />
-                <label className="form-check-label" htmlFor="todo-item-check-2">
-                  Mua kệ cho vk
-                </label>
-              </div>
-            </li>
-            <li className="list-group-item">
-              <div className="form-check">
-                <input className="form-check-input" type="checkbox" value="" id="todo-item-check-3" />
-                <label className="form-check-label" htmlFor="todo-item-check-3">
-                  Làm việc
-                </label>
-              </div>
-            </li>
+            {items.map((item) => (
+              <li key={item.id} className="list-group-item">
+                <div className="form-check">
+                  <input className="form-check-input" type="checkbox" value="" id={`todo-item-check-${item.id}`} />
+                  <label className="form-check-label" htmlFor={`todo-item-check-${item.id}`}>
+                    {item.text}
+                  </label>
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
