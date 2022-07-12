@@ -38,12 +38,26 @@ export function updateStatus(items, itemId, completed) {
   });
 }
 
-export function createNew(text) {
-  let nextId = getAll().length + 1;
-  let item = {
-    id: nextId,
-    text: text,
-  };
+/**
+ * Tạo bộ đếm tự động tăng
+ * @type {Number}
+ */
+let todoCounter = 1;
 
-  return item;
+/**
+ * Thêm một dữ liệu mới và trả về danh sách đã cập nhật
+ *
+ * @param {Array} list
+ * @param {Object} data
+ * @return {Array}
+ */
+export function addToList(list, data) {
+  let item = Object.assign(
+    {
+      id: getAll().length + todoCounter++,
+    },
+    data,
+  );
+
+  return list.concat([item]);
 }
