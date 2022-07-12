@@ -1,22 +1,20 @@
 import React from 'react';
-import { Filter } from './Filter';
+import Filter from './Filter';
 
-function Footer(props) {
+export default function Footer(props) {
   const { count, filter, changeFilter } = props;
 
   return (
     <div className="todo-footer clearfix">
-      <div className="pull-left">
+      <div className="float-start">
         <strong>
           <span className="count-todos">{count}</span>
           {' việc cần làm'}
         </strong>
       </div>
-      <div className="pull-right">
-        <Filter {...{ filter, changeFilter }} />
+      <div className="float-end">
+        <Filter filter={filter} change={changeFilter} />
       </div>
     </div>
   );
 }
-
-export default Footer;

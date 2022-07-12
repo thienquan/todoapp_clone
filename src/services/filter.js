@@ -13,10 +13,10 @@ export function applyFilter(list, filter) {
   }
 }
 
-export function getOption() {
+export function getOptions() {
   return {
-    [FILTER_ALL]: 'All',
-    [FILTER_ACTIVE]: 'Active',
-    [FILTER_COMPLETED]: 'Completed',
+    [FILTER_ALL]: 'Tất cả',
+    [FILTER_ACTIVE]: 'Đang cần làm',
+    [FILTER_COMPLETED]: 'Đã hoàn thành',
   };
 }

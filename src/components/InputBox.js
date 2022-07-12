@@ -20,7 +20,6 @@ class InputBox extends Component {
     const text = this.state.value.trim();
     if (e.keyCode === KeyCode.KEY_RETURN && text) {
       addNew(text);
-      console.log(this.state.value);
       this.clear();
     }
   }
@@ -30,6 +29,7 @@ class InputBox extends Component {
         type="text"
         className="form-control add-todo"
         onKeyUp={this.handleKeyUp.bind(this)}
+        value={this.state.value}
         onChange={this.handleChange.bind(this)}
         placeholder="Thêm mới"
       />

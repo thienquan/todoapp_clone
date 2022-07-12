@@ -52,6 +52,11 @@ body {
   padding: 8px 0px;
 }
 
+li.completed label {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
 .todo-footer {
   border-top: 1px solid #ddd;
   background-color: #f4fce8;

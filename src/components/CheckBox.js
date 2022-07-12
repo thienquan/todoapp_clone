@@ -5,11 +5,23 @@ class CheckBox extends Component {
     super(props);
 
     this.state = {
-      checked: props.checked,
+      checked: this.props.checked,
     };
   }
+  handleChange(e) {
+    const { checked } = e.target;
+    this.setState({ checked });
+    this.props.onChange(checked);
+  }
   render() {
-    return <input className="form-check-input" type="checkbox" checked="{this.state.checked}" />;
+    return (
+      <input
+        className="form-check-input"
+        type="checkbox"
+        checked={this.state.checked}
+        onChange={this.handleChange.bind(this)}
+      />
+    );
   }
 }
 

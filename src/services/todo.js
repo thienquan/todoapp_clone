@@ -1,3 +1,5 @@
+import update from 'immutability-helper';
+
 /**
  * Get the list of todo items.
  * @return {Array}
@@ -22,11 +24,26 @@ export function getAll() {
   ];
 }
 
+export function getItemById(itemId) {
+  return getAll().find((item) => item.id === itemId);
+}
+
+export function updateStatus(items, itemId, completed) {
+  let index = items.findIndex((item) => item.id === itemId);
+
+  return update(items, {
+    [index]: {
+      completed: { $set: completed },
+    },
+  });
+}
+
 export function createNew(text) {
-  let nextId = this.state.items.length + 1;
+  let nextId = getAll().length + 1;
   let item = {
     id: nextId,
     text: text,
   };
+
   return item;
 }

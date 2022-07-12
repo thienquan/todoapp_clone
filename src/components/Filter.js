@@ -1,21 +1,21 @@
 import React from 'react';
-import { getOption } from '~/services/filter';
+import { getOptions } from '~/services/filter';
 
-const option = getOption();
+const options = getOptions();
 
-export const Filter = (props) => {
-  const { filter, changeFilter } = props;
+export default function Filter(props) {
+  const { filter, change } = props;
   const getClass = (key) => (key === filter ? 'selected' : '');
 
   return (
     <ul className="filters list-unstyled clearfix">
-      {Object.keys(option).map((key, index) => (
+      {Object.keys(options).map((key, index) => (
         <li key={index}>
-          <a onClick={() => changeFilter(key)} className={getClass(key)}>
-            {option[key]}
+          <a onClick={() => change(key)} className={getClass(key)}>
+            {options[key]}
           </a>
         </li>
       ))}
     </ul>
   );
-};
+}
