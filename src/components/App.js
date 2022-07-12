@@ -6,6 +6,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      filter: 'active',
       items: [
         {
           id: 1,
@@ -30,14 +31,20 @@ class App extends Component {
     return (
       <div className="container">
         <div className="row">
-          <TodoList title={title} addNew={this.addNew} items={this.state.items} />
+          <TodoList
+            title={title}
+            addNew={this.addNew.bind(this)}
+            items={this.state.items}
+            {...this.state}
+          />
         </div>
       </div>
     );
   }
   addNew(text) {
+    let nextId = this.state.items.length + 1;
     let item = {
-      id: this.state.items.length + 1,
+      id: nextId,
       text: text,
     };
     let updatedList = this.state.items.concat([item]);

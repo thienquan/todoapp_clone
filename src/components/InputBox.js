@@ -12,10 +12,16 @@ class InputBox extends Component {
   handleChange(e) {
     this.setState({ value: e.target.value });
   }
+  clear() {
+    this.setState({ value: '' });
+  }
   handleKeyUp(e) {
-    if (e.keyCode === KeyCode.KEY_RETURN) {
+    const { addNew } = this.props;
+    const text = this.state.value.trim();
+    if (e.keyCode === KeyCode.KEY_RETURN && text) {
+      addNew(text);
       console.log(this.state.value);
-      // Clear the text box
+      this.clear();
     }
   }
   render() {

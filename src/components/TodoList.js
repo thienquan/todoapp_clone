@@ -4,7 +4,7 @@ import Footer from './Footer';
 import TodoItem from './TodoItem';
 
 function TodoList(props) {
-  const { items, title, addNew } = props;
+  const { items, title, addNew, filter } = props;
   const count = items.length;
 
   return (
@@ -15,7 +15,7 @@ function TodoList(props) {
           <TodoItem key={item.id} data={item} />
         ))}
       </ul>
-      <Footer count={count} />
+      <Footer count={count} filter={filter} />
     </div>
   );
 }
