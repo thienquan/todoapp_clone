@@ -1,29 +1,15 @@
 import React, { Component } from 'react';
 import TodoList from './TodoList';
+import { FILTER_ACTIVE } from '~/services/filter';
+import { createNew, getAll } from '~/services/todo';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      filter: 'active',
-      items: [
-        {
-          id: 1,
-          text: 'Ghi chép chi tiêu trong ngày',
-          completed: false,
-        },
-        {
-          id: 2,
-          text: 'Mua kệ cho vk',
-          completed: false,
-        },
-        {
-          id: 3,
-          text: 'Code dự án cty',
-          completed: false,
-        },
-      ],
+      filter: FILTER_ACTIVE,
+      items: getAll(),
     };
   }
   render() {
@@ -35,6 +21,7 @@ class App extends Component {
             title={title}
             addNew={this.addNew.bind(this)}
             items={this.state.items}
+            changeFilter={this.changeFilter.bind(this)}
             {...this.state}
           />
         </div>
@@ -42,15 +29,14 @@ class App extends Component {
     );
   }
   addNew(text) {
-    let nextId = this.state.items.length + 1;
-    let item = {
-      id: nextId,
-      text: text,
-    };
+    let item = createNew(text);
     let updatedList = this.state.items.concat([item]);
     this.setState({
       items: updatedList,
     });
+  }
+  changeFilter(filter) {
+    this.setState(filter);
   }
 }
 

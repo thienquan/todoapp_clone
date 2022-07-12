@@ -2,7 +2,7 @@ import React from 'react';
 import { Filter } from './Filter';
 
 function Footer(props) {
-  const { count, filter } = props;
+  const { count, filter, changeFilter } = props;
 
   return (
     <div className="todo-footer clearfix">
@@ -13,7 +13,7 @@ function Footer(props) {
         </strong>
       </div>
       <div className="pull-right">
-        <Filter filter={filter} />
+        <Filter {...{ filter, changeFilter }} />
       </div>
     </div>
   );

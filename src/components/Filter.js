@@ -1,19 +1,19 @@
 import React from 'react';
+import { getOption } from '~/services/filter';
 
-const option = {
-  all: 'All',
-  active: 'Active',
-  completed: 'Completed',
-};
+const option = getOption();
 
 export const Filter = (props) => {
-  const { filter } = props;
+  const { filter, changeFilter } = props;
+  const getClass = (key) => (key === filter ? 'selected' : '');
 
   return (
     <ul className="filters list-unstyled clearfix">
       {Object.keys(option).map((key, index) => (
         <li key={index}>
-          <a className={key === filter ? 'selected' : ''}>{option[key]}</a>
+          <a onClick={() => changeFilter(key)} className={getClass(key)}>
+            {option[key]}
+          </a>
         </li>
       ))}
     </ul>
